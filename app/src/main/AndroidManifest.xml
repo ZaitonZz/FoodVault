@@ -12,7 +12,25 @@
         android:theme="@style/Theme.FoodVault"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".View.BookmarksActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.MyRecipesActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.SearchActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.HomeActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".View.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
