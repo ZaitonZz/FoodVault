@@ -4,6 +4,48 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:animateLayoutChanges="true"
+    android:background="#FCF7FF"
     tools:context=".View.HomeActivity">
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottomNavigationView"
+        android:layout_width="match_parent"
+        android:layout_height="69dp"
+        android:clickable="true"
+        android:clipToPadding="true"
+        android:focusable="true"
+        android:pointerIcon="none"
+        app:backgroundTint="#EDEDED"
+
+        app:itemIconSize="30dp"
+        app:itemIconTint="@drawable/select"
+        app:itemTextColor="#404040"
+        app:labelVisibilityMode="unlabeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_navigation_menu" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="178dp"
+        android:layout_height="32dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/foodvault" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Home"
+        android:textSize="70sp"
+        tools:layout_editor_absoluteX="59dp"
+        tools:layout_editor_absoluteY="71dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
