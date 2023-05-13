@@ -6,50 +6,84 @@
     android:layout_height="match_parent"
     tools:context=".View.LoginActivity">
 
-    <EditText
-        android:id="@+id/UserLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="127dp"
-        android:ems="10"
-        android:hint="Username"
-        android:inputType="textPersonName"
-        android:minHeight="48dp"
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="295dp"
+        android:layout_height="127dp"
+        android:layout_marginBottom="132dp"
+        app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.508"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/foodvault" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/loginButton"
+        android:layout_width="193dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="104dp"
+        android:background="@drawable/blue_btn_background"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Log In"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@+id/createAccButton"
+        app:layout_constraintEnd_toEndOf="@+id/editTextTextPassword"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/editTextTextPassword"
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPassword"
+        app:layout_constraintVertical_bias="1.0"></androidx.appcompat.widget.AppCompatButton>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/createAccButton"
+        android:layout_width="150dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="92dp"
+        android:background="@drawable/green_btn_background"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Create new acount"
+        android:textAllCaps="false"
+        android:textColor="#0D1321"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/loginButton"
+        app:layout_constraintHorizontal_bias="0.488"
+        app:layout_constraintStart_toStartOf="@+id/loginButton"></androidx.appcompat.widget.AppCompatButton>
 
     <EditText
         android:id="@+id/editTextTextPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="66dp"
+        android:layout_width="750px"
+        android:layout_height="145px"
+        android:layout_marginBottom="316dp"
+        android:background="@drawable/edittext_background"
         android:ems="10"
+        android:fontFamily="@font/roboto_mono"
         android:hint="Password"
         android:inputType="textPassword"
-        android:minHeight="48dp"
-        app:layout_constraintEnd_toEndOf="@+id/UserLogin"
-        app:layout_constraintStart_toStartOf="@+id/UserLogin"
-        app:layout_constraintTop_toBottomOf="@+id/UserLogin" />
-
-    <Button
-        android:id="@+id/loginButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="104dp"
-        android:text="Button"
-        app:layout_constraintBottom_toTopOf="@+id/createAccButton"
-        app:layout_constraintEnd_toEndOf="@+id/createAccButton"
-        app:layout_constraintStart_toStartOf="@+id/createAccButton" />
-
-    <Button
-        android:id="@+id/createAccButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="105dp"
-        android:text="Button"
+        android:paddingLeft="16dp"
+        android:textSize="7.5pt"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toEndOf="@+id/UserLogin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/UserLogin" />
+
+    <EditText
+        android:id="@+id/UserLogin"
+        android:layout_width="750px"
+        android:layout_height="145px"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:fontFamily="@font/roboto_mono"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:paddingLeft="16dp"
+        android:textSize="7.5pt"
+        app:layout_constraintBottom_toTopOf="@+id/editTextTextPassword"
+        app:layout_constraintEnd_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toStartOf="@+id/imageView" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
