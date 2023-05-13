@@ -6,4 +6,123 @@
     android:layout_height="match_parent"
     tools:context=".View.RegisterActivity">
 
+    <EditText
+        android:id="@+id/editTextFName"
+        android:layout_width="750px"
+        android:layout_height="145px"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="First Name"
+        android:inputType="textPersonName"
+        android:paddingLeft="16dp"
+        android:textSize="7.5pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/imageView3"
+        app:layout_constraintStart_toStartOf="@+id/imageView3"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        app:layout_constraintVertical_bias="0.038" />
+
+    <EditText
+        android:id="@+id/editTextLName"
+        android:layout_width="750px"
+        android:layout_height="145px"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="Last Name"
+        android:inputType="textPersonName"
+        android:paddingLeft="16dp"
+        android:textSize="7.5pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextFName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextFName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextFName"
+        app:layout_constraintVertical_bias="0.03" />
+
+    <EditText
+        android:id="@+id/editTextusername"
+        android:layout_width="750px"
+        android:layout_height="145px"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="Username"
+        android:inputType="textPersonName"
+        android:paddingLeft="16dp"
+        android:textSize="7.5pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextLName"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextLName"
+        app:layout_constraintTop_toBottomOf="@+id/editTextLName"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <EditText
+        android:id="@+id/editTextPass"
+        android:layout_width="750px"
+        android:layout_height="145px"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="16dp"
+        android:textSize="7.5pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextEmail"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextEmail"
+        app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
+        app:layout_constraintVertical_bias="0.073" />
+
+    <EditText
+        android:id="@+id/editTextEmail"
+        android:layout_width="750px"
+        android:layout_height="145px"
+        android:background="@drawable/edittext_background"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:hint="Email"
+        android:inputType="textPersonName"
+        android:paddingLeft="16dp"
+        android:textSize="7.5pt"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextusername"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextusername"
+        app:layout_constraintTop_toBottomOf="@+id/editTextusername"
+        app:layout_constraintVertical_bias="0.054" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnRegister"
+        android:layout_width="199dp"
+        android:layout_height="48dp"
+        android:layout_marginBottom="120dp"
+        android:background="@drawable/blue_btn_background"
+        android:text="Create account"
+        android:textAllCaps="false"
+        android:textColor="#ffffff"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/editTextPass"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="@+id/editTextPass"
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass"
+        app:layout_constraintVertical_bias="1.0">
+
+    </androidx.appcompat.widget.AppCompatButton>
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="262dp"
+        android:layout_height="37dp"
+        android:layout_marginTop="132dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/createaccount" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
