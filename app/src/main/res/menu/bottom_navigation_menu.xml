@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/homeorange"
+        android:visible="true"
+        tools:ignore="MenuTitle"/>
+    <item
+        android:id="@+id/navigation_write"
+        android:icon="@drawable/write"
+        tools:ignore="MenuTitle"/>
+    <item
+        android:id="@+id/navigation_search"
+        android:icon="@drawable/search"
+        tools:ignore="MenuTitle"/>
+    <item
+        android:id="@+id/navigation_calculator"
+        android:icon="@drawable/kcal"
+        tools:ignore="MenuTitle"/>
+    <item
+        android:id="@+id/navigation_profile"
+        android:icon="@drawable/profile"
+        tools:ignore="MenuTitle"/>
+
+</menu>
