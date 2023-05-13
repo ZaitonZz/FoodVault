@@ -2,7 +2,10 @@ package com.example.foodvault.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +16,7 @@ import com.example.foodvault.Controller.LoginStuff;
 import com.example.foodvault.R;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+    private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private Button checkLogin, createAcc;
     private EditText usern, pass;
 
@@ -26,13 +30,19 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         checkLogin.setOnClickListener(this);
         usern = findViewById(R.id.UserLogin);
         pass = findViewById(R.id.editTextTextPassword);
+        String dataDir = this.getApplicationInfo().dataDir;
+
+        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_STORAGE);
+        }
     }
 
     @Override
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.loginButton) {
-            LoginStuff placeholder = new LoginStuff();
+            String dataPath = this.getFilesDir().getPath();
+            LoginStuff placeholder = new LoginStuff(dataPath);
             if(placeholder.loginSuccess(usern.getText().toString(),pass.getText().toString())){
                 startActivity(new Intent(this, HomeActivity.class));
             } else {

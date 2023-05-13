@@ -10,14 +10,12 @@ import java.util.ArrayList;
 
 public class UserCRUD {
     ArrayList<UserDetails> userList = new ArrayList<>();
-    public UserCRUD(){
-        File file = new File("userDetails.txt");
-        if (file.exists()){
-            try {
-                loadFromFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
+    public UserCRUD(String path){
+        File file = new File(path + "/userDetails.txt");
+        try {
+            loadFromFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     public void createUserDetails(UserDetails ud) {
