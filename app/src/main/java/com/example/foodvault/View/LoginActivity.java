@@ -41,8 +41,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.loginButton) {
-            String dataPath = this.getFilesDir().getPath();
-            LoginStuff placeholder = new LoginStuff(dataPath);
+            LoginStuff placeholder = new LoginStuff(this);
             if(placeholder.loginSuccess(usern.getText().toString(),pass.getText().toString())){
                 startActivity(new Intent(this, HomeActivity.class));
             } else {

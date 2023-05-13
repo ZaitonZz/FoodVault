@@ -1,21 +1,36 @@
 package com.example.foodvault.Model;
 
+
+import android.content.Context;
+import android.content.res.AssetManager;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 
 public class UserCRUD {
     ArrayList<UserDetails> userList = new ArrayList<>();
-    public UserCRUD(String path){
-        File file = new File(path + "/userDetails.txt");
+    public UserCRUD(Context context){
+        AssetManager assetManager = context.getAssets();
         try {
-            loadFromFile();
+            InputStream inputStream = assetManager.open("userDetails.txt");
+            loadFromFile(inputStream);
         } catch (IOException e) {
             throw new RuntimeException(e);
+        }
+        File file1 = new File ("userDetails.txt");
+        if(file1.exists()){
+            try {
+                loadFromFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
     }
     public void createUserDetails(UserDetails ud) {
@@ -60,6 +75,22 @@ public class UserCRUD {
 
     public void loadFromFile() throws IOException {
         BufferedReader reader = new BufferedReader(new FileReader("userDetails.txt"));
+        String line = reader.readLine();
+        while (line != null) {
+            String[] parts = line.split(",");
+            String firstName = parts[0];
+            String lastName = parts[1];
+            String username = parts[2];
+            String email = parts[3];
+            String password = parts[4];
+            UserDetails ud = new UserDetails(firstName,lastName,username,email,password);
+            userList.add(ud);
+            line = reader.readLine();
+        }
+        reader.close();
+    }
+    public void loadFromFile(InputStream inputStream) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
         String line = reader.readLine();
         while (line != null) {
             String[] parts = line.split(",");
