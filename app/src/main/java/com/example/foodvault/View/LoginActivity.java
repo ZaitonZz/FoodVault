@@ -31,24 +31,24 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         checkLogin.setOnClickListener(this);
         usern = findViewById(R.id.UserLogin);
         pass = findViewById(R.id.editTextTextPassword);
-        String dataDir = this.getApplicationInfo().dataDir;
+//        String dataDir = this.getApplicationInfo().dataDir;
 
         if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
             requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_STORAGE);
         }
-        enableFullscreen();
+//        enableFullscreen();
     }
-    private void enableFullscreen() {
-        View decorView = getWindow().getDecorView();
-        decorView.setSystemUiVisibility(
-                View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
-                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_FULLSCREEN |
-                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-        );
-    }
+//    private void enableFullscreen() {
+//        View decorView = getWindow().getDecorView();
+//        decorView.setSystemUiVisibility(
+//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
+//                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
+//                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
+//                        View.SYSTEM_UI_FLAG_FULLSCREEN |
+//                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
+//                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
+//        );
+//    }
     @Override
     public void onClick(View v) {
         int id = v.getId();
