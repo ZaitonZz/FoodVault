@@ -15,7 +15,7 @@ import android.widget.Toast;
 import com.example.foodvault.Controller.LoginStuff;
 import com.example.foodvault.R;
 
-public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
+public class ActivityLogin extends AppCompatActivity implements View.OnClickListener {
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private Button checkLogin, createAcc;
     private EditText usern, pass;
@@ -53,14 +53,14 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (id == R.id.loginButton) {
             loginStuff = new LoginStuff(this);
             if(loginStuff.loginSuccess(usern.getText().toString(),pass.getText().toString())){
-                startActivity(new Intent(this, HomeActivity.class));
+                startActivity(new Intent(this, ActivityHome.class));
             } else {
                 Toast.makeText(this,"User Not Found!", Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.createAccButton) {
-//            Intent intent = new Intent(this,RegisterActivity.class);
+//            Intent intent = new Intent(this,ActivityRegister.class);
 //            intent.extra
-            startActivity(new Intent(this, RegisterActivity.class));
+            startActivity(new Intent(this, ActivityRegister.class));
         }
     }
 

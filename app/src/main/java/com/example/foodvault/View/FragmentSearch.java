@@ -11,12 +11,12 @@ import android.view.ViewGroup;
 import com.example.foodvault.R;
 
 
-public class CalcFragment extends Fragment {
+public class FragmentSearch extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_calc, container, false);
+        return inflater.inflate(R.layout.fragment_search, container, false);
     }
 }

@@ -10,13 +10,13 @@ import androidx.fragment.app.FragmentTransaction;
 import com.example.foodvault.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-public class HomeActivity extends AppCompatActivity {
+public class ActivityHome extends AppCompatActivity {
 
-    HomeFragment homeFragment = new HomeFragment();
-    WriteFragment writeFragment = new WriteFragment();
-    SearchFragment searchFragment = new SearchFragment();
-    CalcFragment calcFragment = new CalcFragment();
-    ProfileFragment profileFragment = new ProfileFragment();
+    FragmentHome homeFragment = new FragmentHome();
+    FragmentWrite writeFragment = new FragmentWrite();
+    FragmentSearch searchFragment = new FragmentSearch();
+    FragmentCalc calcFragment = new FragmentCalc();
+    FragmentProfile profileFragment = new FragmentProfile();
     BottomNavigationView bottomNavigationView;
 
     @Override

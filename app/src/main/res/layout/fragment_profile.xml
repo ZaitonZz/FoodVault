@@ -4,7 +4,7 @@
     android:id="@+id/navigation_profile"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.ProfileFragment">
+    tools:context=".View.FragmentProfile">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

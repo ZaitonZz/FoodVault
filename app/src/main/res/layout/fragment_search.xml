@@ -4,7 +4,7 @@
     android:id="@+id/navigation_search"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.SearchFragment">
+    tools:context=".View.FragmentSearch">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView

@@ -1,18 +1,25 @@
 package com.example.foodvault.Model;
 
+import java.util.ArrayList;
+
 public class UserDetails extends Person{
     private String username, email, password;
+    private ArrayList<Recipe> myRecipes, savedRecipes;
     public UserDetails(){
         super();
         username = "";
         email = "";
         password ="";
+        myRecipes = new ArrayList<Recipe>();
+        savedRecipes = new ArrayList<Recipe>();
     }
     public UserDetails(String firstName, String lastName, String username, String email, String password){
         super(firstName, lastName);
         this.username = username;
         this.email = email;
         this.password = password;
+        myRecipes = new ArrayList<Recipe>();
+        savedRecipes = new ArrayList<Recipe>();
     }
 
     public String getUsername() {
@@ -37,5 +44,21 @@ public class UserDetails extends Person{
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public ArrayList<Recipe> getMyRecipes() {
+        return myRecipes;
+    }
+
+    public void setMyRecipes(ArrayList<Recipe> myRecipes) {
+        this.myRecipes = myRecipes;
+    }
+
+    public ArrayList<Recipe> getSavedRecipes() {
+        return savedRecipes;
+    }
+
+    public void setSavedRecipes(ArrayList<Recipe> savedRecipes) {
+        this.savedRecipes = savedRecipes;
     }
 }

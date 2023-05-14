@@ -15,7 +15,7 @@ import com.example.foodvault.R;
 
 import java.io.IOException;
 
-public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
+public class ActivityRegister extends AppCompatActivity implements View.OnClickListener {
 
     private EditText firstName, lastName, username, email, password;
     UserCRUD userCRUD;
@@ -69,7 +69,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                     throw new RuntimeException(e);
                 }
                 Toast.makeText(this, "Registration Successful!", Toast.LENGTH_LONG).show();
-                startActivity(new Intent(this, LoginActivity.class));
+                startActivity(new Intent(this, ActivityLogin.class));
             }
         }
     }

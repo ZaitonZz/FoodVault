@@ -4,7 +4,7 @@
     android:id="@+id/navigation_calculator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".View.CalcFragment">
+    tools:context=".View.FragmentCalc">
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
