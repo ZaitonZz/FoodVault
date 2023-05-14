@@ -2,13 +2,13 @@ package com.example.foodvault.Model;
 
 public class UserDetails extends Person{
     private String username, email, password;
-    UserDetails(){
+    public UserDetails(){
         super();
         username = "";
         email = "";
         password ="";
     }
-    UserDetails(String firstName, String lastName, String username, String email, String password){
+    public UserDetails(String firstName, String lastName, String username, String email, String password){
         super(firstName, lastName);
         this.username = username;
         this.email = email;

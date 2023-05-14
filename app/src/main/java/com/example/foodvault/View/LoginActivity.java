@@ -19,6 +19,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private Button checkLogin, createAcc;
     private EditText usern, pass;
+    private LoginStuff loginStuff;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,33 +34,32 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         pass = findViewById(R.id.editTextTextPassword);
 //        String dataDir = this.getApplicationInfo().dataDir;
 
-        if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-            requestPermissions(new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, PERMISSION_REQUEST_STORAGE);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M &&
+                (checkSelfPermission(Manifest.permission.WRITE_EXTERNAL_STORAGE) !=
+                        PackageManager.PERMISSION_GRANTED ||
+                        checkSelfPermission(Manifest.permission.READ_EXTERNAL_STORAGE) !=
+                                PackageManager.PERMISSION_GRANTED)) {
+            // Request the permissions if they are not granted
+            requestPermissions(new String[]{
+                    Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                    Manifest.permission.READ_EXTERNAL_STORAGE
+            }, PERMISSION_REQUEST_STORAGE);
         }
 //        enableFullscreen();
     }
-//    private void enableFullscreen() {
-//        View decorView = getWindow().getDecorView();
-//        decorView.setSystemUiVisibility(
-//                View.SYSTEM_UI_FLAG_LAYOUT_STABLE |
-//                        View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION |
-//                        View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN |
-//                        View.SYSTEM_UI_FLAG_FULLSCREEN |
-//                        View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY |
-//                        View.SYSTEM_UI_FLAG_HIDE_NAVIGATION
-//        );
-//    }
-    @Override
+@Override
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.loginButton) {
-            LoginStuff placeholder = new LoginStuff(this);
-            if(placeholder.loginSuccess(usern.getText().toString(),pass.getText().toString())){
+            loginStuff = new LoginStuff(this);
+            if(loginStuff.loginSuccess(usern.getText().toString(),pass.getText().toString())){
                 startActivity(new Intent(this, HomeActivity.class));
             } else {
                 Toast.makeText(this,"User Not Found!", Toast.LENGTH_SHORT).show();
             }
         } else if (id == R.id.createAccButton) {
+//            Intent intent = new Intent(this,RegisterActivity.class);
+//            intent.extra
             startActivity(new Intent(this, RegisterActivity.class));
         }
     }

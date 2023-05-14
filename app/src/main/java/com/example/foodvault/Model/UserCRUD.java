@@ -7,30 +7,42 @@ import android.content.res.AssetManager;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileOutputStream;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.OutputStreamWriter;
 import java.util.ArrayList;
 
 public class UserCRUD {
+    private Context context;
     ArrayList<UserDetails> userList = new ArrayList<>();
+    static AssetManager assetManager;
+
     public UserCRUD(Context context){
-        AssetManager assetManager = context.getAssets();
-        try {
-            InputStream inputStream = assetManager.open("userDetails.txt");
-            loadFromFile(inputStream);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-        File file1 = new File ("userDetails.txt");
-        if(file1.exists()){
+        this.context = context;
+        assetManager = context.getAssets();
+        File file = new File(context.getExternalFilesDir(null),"userDetails.txt");
+        if (!file.exists()) {
+            try {
+                InputStream inputStream = assetManager.open("userDetails.txt");
+                loadFromFile(inputStream);
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else{
             try {
                 loadFromFile();
             } catch (IOException e) {
                 throw new RuntimeException(e);
             }
+        }
+        try {
+            saveToFile();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
     }
     public void createUserDetails(UserDetails ud) {
@@ -46,7 +58,7 @@ public class UserCRUD {
         return null;
     }
 
-    public void updateTeacherSubject(UserDetails ud) {
+    public void updateUser(UserDetails ud) {
         for (int i = 0; i < userList.size(); i++) {
             if (userList.get(i).getUsername().equals(ud.getUsername()) &&
                     userList.get(i).getPassword().equals(ud.getPassword())) {
@@ -56,7 +68,7 @@ public class UserCRUD {
         }
     }
 
-    public void deleteTeacherSubject(String username, String password) {
+    public void deleteUpdate(String username, String password) {
         for (int i = 0; i < userList.size(); i++) {
             if (userList.get(i).getUsername().equals(username) &&
                     userList.get(i).getPassword().equals(password)) {
@@ -66,15 +78,17 @@ public class UserCRUD {
         }
     }
     public void saveToFile() throws IOException {
-        BufferedWriter writer = new BufferedWriter(new FileWriter("userDetails.txt"));
+        OutputStream outputStream = new FileOutputStream(new File(context.getExternalFilesDir(null), "userDetails.txt"));
+        BufferedWriter writer = new BufferedWriter(new OutputStreamWriter(outputStream));
         for (UserDetails ud : userList) {
             writer.write(ud.getFirstName() + "," + ud.getLastName() + "," + ud.getUsername() + "," + ud.getEmail() + "," + ud.getPassword() + "\n");
         }
+        writer.flush();
         writer.close();
     }
 
     public void loadFromFile() throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader("userDetails.txt"));
+        BufferedReader reader = new BufferedReader(new FileReader(new File(context.getExternalFilesDir(null),"userDetails.txt")));
         String line = reader.readLine();
         while (line != null) {
             String[] parts = line.split(",");

@@ -10,6 +10,7 @@
         android:id="@+id/editTextFName"
         android:layout_width="750px"
         android:layout_height="145px"
+        android:layout_marginTop="24dp"
         android:background="@drawable/edittext_background"
         android:ems="10"
         android:fontFamily="@font/roboto"
@@ -17,11 +18,9 @@
         android:inputType="textPersonName"
         android:paddingLeft="16dp"
         android:textSize="7.5pt"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/imageView3"
         app:layout_constraintStart_toStartOf="@+id/imageView3"
-        app:layout_constraintTop_toBottomOf="@+id/imageView3"
-        app:layout_constraintVertical_bias="0.038" />
+        app:layout_constraintTop_toBottomOf="@+id/imageView3" />
 
     <EditText
         android:id="@+id/editTextLName"
@@ -99,18 +98,16 @@
         android:id="@+id/btnRegister"
         android:layout_width="199dp"
         android:layout_height="48dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginTop="48dp"
         android:background="@drawable/blue_btn_background"
         android:text="Create account"
         android:textAllCaps="false"
         android:textColor="#ffffff"
         android:textSize="14sp"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextPass"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="@+id/editTextPass"
-        app:layout_constraintTop_toBottomOf="@+id/editTextPass"
-        app:layout_constraintVertical_bias="1.0">
+        app:layout_constraintTop_toBottomOf="@+id/editTextPass">
 
     </androidx.appcompat.widget.AppCompatButton>
 
