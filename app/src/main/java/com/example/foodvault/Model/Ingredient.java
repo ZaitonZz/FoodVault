@@ -3,12 +3,14 @@ package com.example.foodvault.Model;
 public class Ingredient {
     private String ingredientName, quantity, unit, preparation;
     Ingredient(){
+
         ingredientName ="";
         quantity = "";
         unit = "";
         preparation = "";
     }
-    Ingredient(String ingredientName, String quantity, String unit, String preparation){
+    public Ingredient(String quantity, String unit, String ingredientName, String preparation){
+
         this.ingredientName = ingredientName;
         this.quantity = quantity;
         this.unit = unit;
@@ -45,5 +47,14 @@ public class Ingredient {
 
     public void setPreparation(String preparation) {
         this.preparation = preparation;
+    }
+
+    public boolean equals(Ingredient i) {
+        if (this.getIngredientName().equalsIgnoreCase(i.getIngredientName())) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }

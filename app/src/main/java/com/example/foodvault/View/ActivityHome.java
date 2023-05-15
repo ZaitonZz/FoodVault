@@ -7,8 +7,13 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.foodvault.Controller.RecipeController;
+import com.example.foodvault.Controller.RecipeSearch;
+import com.example.foodvault.Model.Recipe;
 import com.example.foodvault.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.io.IOException;
 
 public class ActivityHome extends AppCompatActivity {
 
@@ -24,8 +29,16 @@ public class ActivityHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        try {
+            RecipeController.loadFromFile(this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
+        for (Recipe r: RecipeController.RecipeData.getRecipeList()) {
+            System.out.println(r.getRecipeName());
+        }
         // set default
         replaceFragment(homeFragment);
         bottomNavigationView.setOnItemSelectedListener(item -> {
