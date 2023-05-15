@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -13,7 +14,13 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.foodvault.Controller.LoginStuff;
+import com.example.foodvault.Controller.RecipeController;
+import com.example.foodvault.Model.RecipeCatalogue;
 import com.example.foodvault.R;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
 
 public class ActivityLogin extends AppCompatActivity implements View.OnClickListener {
     private static final int PERMISSION_REQUEST_STORAGE = 1000;

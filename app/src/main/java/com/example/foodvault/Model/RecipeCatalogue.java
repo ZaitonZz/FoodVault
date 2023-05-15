@@ -1,5 +1,8 @@
 package com.example.foodvault.Model;
 
+import android.widget.ArrayAdapter;
+
+import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -10,20 +13,7 @@ public class RecipeCatalogue {
         recipeList = new ArrayList<>();
     }
 
-    // Retrieve all recipes in a given category
-    public ArrayList<Recipe> getRecByCateg(String[] categories) {
-        ArrayList<Recipe> recipes = new ArrayList<>();
-        for (Recipe r : recipeList) {
-            for (String category : categories) {
-                if (Arrays.asList(r.getCategories()).contains(category)) {
-                    recipes.add(r);
-                    break;
-                }
-            }
-        }
-        return recipes;
-    }
-
+    public ArrayList<Recipe> getRecipeList() {return recipeList;}
     // Retrieve a specific recipe object from the recipe list
     public Recipe retrieveRecipe(Recipe recipe) {
         for (Recipe r : recipeList) {
@@ -67,10 +57,97 @@ public class RecipeCatalogue {
     // Search for a recipe in the recipe list based on its name
     public Recipe searchRecipe(String recipeName) {
         for (Recipe r : recipeList) {
-            if (r.getRecipeName().equalsIgnoreCase(recipeName)) {
+            if (r.getRecipeName().toLowerCase().contains(recipeName.toLowerCase())) {
                 return r;
             }
         }
         return null;
     }
+
+    // filter by list of ingredients
+    public ArrayList<Recipe> filterByIngredients(ArrayList<Ingredient> ingredientList) {
+        ArrayList<Recipe> result = new ArrayList<>();
+        for (Recipe r: recipeList) {
+            if (r.getIngredients().containsAll(ingredientList)) {
+                result.add(r);
+            }
+        }
+
+        return result;
+    }
+
+    // filter by cuisine
+    public ArrayList<Recipe> filterByCuisine(String cuisine) {
+        ArrayList<Recipe> result = new ArrayList<>();
+
+        for (Recipe r: recipeList) {
+            if (r.getCuisine().equalsIgnoreCase(cuisine)) {
+                result.add(r);
+            }
+        }
+
+        return result;
+    }
+
+    // filter by category
+    public ArrayList<Recipe> filterByCategory(String category) {
+        ArrayList<Recipe> recipes = new ArrayList<>();
+        for (Recipe r : recipeList) {
+            if (Arrays.asList(r.getCategories()).contains(category)) {
+                recipes.add(r);
+                break;
+            }
+        }
+        return recipes;
+    }
+
+    // filter by cooktime (under n minutes)
+    public ArrayList<Recipe> filterByCookTime(double time) { // time should be in minutes
+        ArrayList<Recipe> result = new ArrayList<>();
+
+        for (Recipe r: recipeList) {
+            String[] recipeTimeAsString = r.getTime().split(" ");
+            double recipeTime = Double.parseDouble(recipeTimeAsString[0]); // first element contains the number, second contains the unit
+
+            if (recipeTime <= time) {
+                result.add(r);
+            }
+        }
+
+        return result;
+    }
+
+    // filter by nutrition value
+    public ArrayList<Recipe> filterByNutrition(String nutrition) {
+        ArrayList<Recipe> result = new ArrayList<>();
+
+        for (Recipe r: recipeList) {
+            if (Arrays.asList(r.getNutritionValues()).contains(nutrition)) {
+                result.add(r);
+            }
+        }
+        return result;
+    }
+
+    // find common among all selected filters
+    public ArrayList<Recipe> filterOperation(ArrayList<Ingredient> ingList, String category, String cuisine, double time, String nutrition) {
+        ArrayList<Recipe> filterIngr = filterByIngredients(ingList);
+        ArrayList<Recipe> filterCat = filterByCategory(category);
+        ArrayList<Recipe> filterCus = filterByCuisine(cuisine);
+        ArrayList<Recipe> filterCook = filterByCookTime(time);
+        ArrayList<Recipe> filterNut = filterByNutrition(nutrition);
+
+        ArrayList<Recipe> result = new ArrayList<>();
+
+        // find the common recipes
+        for (Recipe r: recipeList) {
+            if (filterIngr.contains(r) && filterCat.contains(r) && filterCus.contains(r)
+                    && filterCook.contains(r) && filterNut.contains(r)) {
+                result.add(r);
+            }
+        }
+
+        return result;
+    }
+
 }

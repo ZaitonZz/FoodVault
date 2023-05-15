@@ -3,10 +3,9 @@ package com.example.foodvault.Model;
 import java.util.ArrayList;
 
 public class Recipe {
-    private String recipeName, servingSize, cuisine, calorieAmount;
+    private String recipeName, servingSize, cuisine, calorieAmount, time;
     private String[] instructions, categories, nutritionValues;
     private ArrayList<Ingredient> ingredients;
-    private double time;
 
     public Recipe() {
         recipeName = "";
@@ -17,7 +16,7 @@ public class Recipe {
         categories = new String[]{""};
         nutritionValues = new String[]{""};
         ingredients = new ArrayList<Ingredient>();
-        time = 0.0;
+        time = "";
     }
 
     public Recipe(String recipeName) {
@@ -29,11 +28,11 @@ public class Recipe {
         categories = new String[]{""};
         nutritionValues = new String[]{""};
         ingredients = new ArrayList<Ingredient>();
-        time = 0.0;
+        time = "";
     }
 
     public Recipe(String recipeName, ArrayList<Ingredient> ingredients, String[] instructions,
-                  String[] categories, String[] nutritionValues, String servingSize, double time,
+                  String[] categories, String[] nutritionValues, String servingSize, String time,
                   String cuisine, String calorieAmount) {
         this.recipeName = recipeName;
         this.ingredients = ingredients;
@@ -46,11 +45,11 @@ public class Recipe {
         this.calorieAmount = calorieAmount;
     }
 
-    public double getTime() {
+    public String getTime() {
         return time;
     }
 
-    public void setTime(double time) {
+    public void setTime(String time) {
         this.time = time;
     }
     public String getRecipeName() {
@@ -115,5 +114,14 @@ public class Recipe {
 
     public void setIngredients(ArrayList<Ingredient> ingredients) {
         this.ingredients = ingredients;
+    }
+
+    public boolean equals(Recipe r) {
+        if (this.getRecipeName().equalsIgnoreCase(r.getRecipeName())) {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 }
