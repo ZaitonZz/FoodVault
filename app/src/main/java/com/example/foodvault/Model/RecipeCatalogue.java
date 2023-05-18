@@ -5,6 +5,7 @@ import android.widget.ArrayAdapter;
 import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.concurrent.RecursiveAction;
 
 public class RecipeCatalogue {
     private ArrayList<Recipe> recipeList;
@@ -22,6 +23,15 @@ public class RecipeCatalogue {
             }
         }
         return null;
+    }
+
+    public Recipe retrieveRecipeByName(String recipeName) {
+        Recipe rec = new Recipe();
+        rec.setRecipeName(recipeName);
+
+        Recipe r = retrieveRecipe(rec);
+
+        return r;
     }
 
     // Add a new recipe to the recipe list

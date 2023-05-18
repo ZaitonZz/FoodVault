@@ -33,6 +33,12 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        try {
+            RecipeController.loadFromFile(this);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
         checkLogin = findViewById(R.id.loginButton);
         createAcc = findViewById(R.id.createAccButton);
         createAcc.setOnClickListener(this);

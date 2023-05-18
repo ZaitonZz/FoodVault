@@ -1,17 +1,182 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_calculator"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#fcf7ff"
     tools:context=".View.FragmentCalc">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:text="Calc Fragment"
-        android:textSize="26dp" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textInputLayout"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="204dp"
+        android:layout_height="60dp"
+        android:layout_margin="16dp"
+        android:hint="@string/select"
+        app:boxBackgroundColor="#fcf7ff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.864"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.451">
 
-</FrameLayout>
+        <AutoCompleteTextView
+            android:id="@+id/auto_complete_text"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/drop_down_background"
+            android:fontFamily="@font/roboto"
+            android:inputType="text"
+            app:layout_anchor="@+id/textInputLayout"
+            app:layout_anchorGravity="top|center" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/calPerServeText"
+        android:layout_width="204dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/drop_down_background"
+        android:editable="false"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_vertical"
+        android:paddingLeft="15dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/numServingText"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/numServingText"
+        app:layout_constraintTop_toBottomOf="@+id/numServingText" />
+
+    <EditText
+        android:id="@+id/numServingText"
+        android:layout_width="204dp"
+        android:layout_height="53dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/drop_down_background"
+        android:ems="10"
+        android:fontFamily="@font/roboto"
+        android:gravity="center_vertical"
+        android:hint="Servings"
+        android:digits="0123456789"
+        android:paddingLeft="15dp"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textInputLayout"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textInputLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textInputLayout" />
+
+    <TextView
+        android:id="@+id/foodLabel"
+        android:layout_width="58dp"
+        android:layout_height="25dp"
+        android:layout_marginTop="320dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Food:"
+        android:textAlignment="viewEnd"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toTopOf="@+id/numServingText"
+        app:layout_constraintEnd_toStartOf="@+id/textInputLayout"
+        app:layout_constraintHorizontal_bias="0.889"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.083" />
+
+    <TextView
+        android:id="@+id/foodLabel2"
+        android:layout_width="95dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="12dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Servings:"
+        android:textAlignment="viewEnd"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/numServingText"
+        app:layout_constraintEnd_toStartOf="@+id/numServingText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodLabel"
+        app:layout_constraintVertical_bias="0.142" />
+
+    <TextView
+        android:id="@+id/foodLabel3"
+        android:layout_width="114dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="32dp"
+        android:fontFamily="@font/roboto_medium"
+        android:singleLine="false"
+        android:text="Calorie per serving:"
+        android:textAlignment="viewEnd"
+        android:textColor="#000000"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="@+id/calPerServeText"
+        app:layout_constraintEnd_toStartOf="@+id/calPerServeText"
+        app:layout_constraintHorizontal_bias="0.773"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/foodLabel2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/buttonCalculate"
+        android:layout_width="181dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="52dp"
+        android:background="@drawable/green_btn_background"
+        android:fontFamily="@font/roboto_medium"
+        android:text="Calculate"
+        android:textAllCaps="false"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/calPerServeText" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="150dp"
+        android:layout_height="22dp"
+        android:layout_marginTop="36dp"
+        android:src="@drawable/foodvault"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/calcResult"
+        android:layout_width="297dp"
+        android:layout_height="135dp"
+        android:layout_marginTop="52dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="0"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="110sp"
+        app:layout_constraintBottom_toTopOf="@+id/foodLabel"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2"
+        app:layout_constraintVertical_bias="0.02" />
+
+    <TextView
+        android:id="@+id/kcalLabel"
+        android:layout_width="143dp"
+        android:layout_height="40dp"
+        android:layout_marginBottom="48dp"
+        android:fontFamily="@font/roboto_medium"
+        android:text="kcal"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="35sp"
+        app:layout_constraintBottom_toTopOf="@+id/foodLabel"
+        app:layout_constraintEnd_toEndOf="@+id/calcResult"
+        app:layout_constraintStart_toStartOf="@+id/calcResult"
+        app:layout_constraintTop_toTopOf="@+id/calcResult"
+        app:layout_constraintVertical_bias="1.0" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
