@@ -29,40 +29,32 @@ public class ActivityHome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
-        try {
-            RecipeController.loadFromFile(this);
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-        for (Recipe r: RecipeController.RecipeData.getRecipeList()) {
-            System.out.println(r.getRecipeName());
-        }
         // set default
-        replaceFragment(homeFragment);
+        replaceFragment(new FragmentHome());
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
             switch (id) {
                 case R.id.navigation_home:
-                    replaceFragment(homeFragment);
+                    replaceFragment(new FragmentHome());
                     bottomNavigationView.getMenu().findItem(R.id.navigation_home).setChecked(true);
                     return true;
                 case R.id.navigation_write:
-                    replaceFragment(writeFragment);
+                    replaceFragment(new FragmentWrite());
                     bottomNavigationView.getMenu().findItem(R.id.navigation_write).setChecked(true);
                     return true;
                 case R.id.navigation_search:
-                    replaceFragment(searchFragment);
+                    replaceFragment(new FragmentSearch());
                     bottomNavigationView.getMenu().findItem(R.id.navigation_search).setChecked(true);
                     return true;
                 case R.id.navigation_calculator:
-                    replaceFragment(calcFragment);
+                    replaceFragment(new FragmentCalc());
                     bottomNavigationView.getMenu().findItem(R.id.navigation_calculator).setChecked(true);
                     return true;
                 case R.id.navigation_profile:
-                    replaceFragment(profileFragment);
+                    replaceFragment(new FragmentProfile());
                     bottomNavigationView.getMenu().findItem(R.id.navigation_profile).setChecked(true);
                     return true;
             }
