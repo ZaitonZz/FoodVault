@@ -2,6 +2,7 @@ package com.example.foodvault.View;
 
 import android.os.Bundle;
 
+import androidx.core.view.WindowCompat;
 import androidx.fragment.app.Fragment;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -38,7 +39,6 @@ public class FragmentCalc extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-
         item = new String[RecipeController.RecipeData.getRecipeList().size()];
         int index = 0;
         for (Recipe r: RecipeController.RecipeData.getRecipeList()) { // create list for items

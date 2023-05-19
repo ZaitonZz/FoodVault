@@ -1,6 +1,7 @@
 package com.example.foodvault.View;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 
 import android.Manifest;
 import android.content.Intent;
@@ -31,6 +32,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_login);
 
         try {

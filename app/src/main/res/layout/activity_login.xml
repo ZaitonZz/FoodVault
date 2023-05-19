@@ -10,7 +10,7 @@
         android:id="@+id/imageView"
         android:layout_width="295dp"
         android:layout_height="127dp"
-        android:layout_marginBottom="132dp"
+        android:layout_marginBottom="140dp"
         app:layout_constraintBottom_toBottomOf="@+id/editTextTextPassword"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.508"

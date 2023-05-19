@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="orangeu">#E3170A</color>
     <color name="foodvault_orange">#E3170A</color>
-    <color name="foodvault_blue">#0D1321</color>
+    <color name="foodvault_blue">#001944</color>
     <color name="foodvault_green">#85CB33</color>
+    <color name="foodvault_white">#FCF7FF</color>
 </resources>

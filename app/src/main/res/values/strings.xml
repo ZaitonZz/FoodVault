@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name" translatable="false">FoodVault</string>
+    <string name="select" translatable="false">Select Recipe</string>
 </resources>

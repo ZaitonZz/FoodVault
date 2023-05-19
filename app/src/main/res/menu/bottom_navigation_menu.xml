@@ -5,7 +5,6 @@
     <item
         android:id="@+id/navigation_home"
         android:icon="@drawable/homeorange"
-        android:visible="true"
         tools:ignore="MenuTitle"/>
     <item
         android:id="@+id/navigation_write"
