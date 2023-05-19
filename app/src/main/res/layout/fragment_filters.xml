@@ -15,7 +15,7 @@
         android:layout_width="175dp"
         android:layout_height="32dp"
         android:layout_marginTop="32dp"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_bold"
         android:text="Search by Ingredients"
         android:textColor="#000000"
         android:textSize="15sp"
@@ -29,7 +29,7 @@
         android:layout_width="175dp"
         android:layout_height="20dp"
         android:layout_marginTop="24dp"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_bold"
         android:text="Meal Type"
         android:textColor="#000000"
         android:textSize="15sp"
@@ -43,7 +43,7 @@
         android:layout_width="174dp"
         android:layout_height="20dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_bold"
         android:text="Cuisine"
         android:textColor="#000000"
         android:textSize="15sp"
@@ -63,9 +63,10 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip1"
+            style="@style/Widget.MaterialComponents.Chip.Choice"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            style="@style/Widget.MaterialComponents.Chip.Choice"
+            android:fontFamily="sans-serif"
             android:text="Appetizers" />
 
         <com.google.android.material.chip.Chip
@@ -176,7 +177,7 @@
         android:layout_width="175dp"
         android:layout_height="32dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_bold"
         android:text="Nutrition"
         android:textColor="#000000"
         android:textSize="15sp"
@@ -216,7 +217,7 @@
         android:layout_width="175dp"
         android:layout_height="17dp"
         android:layout_marginTop="12dp"
-        android:fontFamily="@font/roboto_medium"
+        android:fontFamily="@font/roboto_bold"
         android:text="Cook Time"
         android:textColor="#000000"
         android:textSize="15sp"
