@@ -38,7 +38,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/imageView2" />
 
             <ImageView
-                android:id="@+id/imageView4"
+                android:id="@+id/fvaultImg"
                 android:layout_width="336dp"
                 android:layout_height="258dp"
                 android:layout_marginStart="16dp"
@@ -70,8 +70,8 @@
                 android:textAllCaps="false"
                 android:textColor="@android:color/background_light"
                 android:textSize="24sp"
-                app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-                app:layout_constraintStart_toStartOf="@+id/imageView4" />
+                app:layout_constraintBottom_toBottomOf="@+id/fvaultImg"
+                app:layout_constraintStart_toStartOf="@+id/fvaultImg" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>

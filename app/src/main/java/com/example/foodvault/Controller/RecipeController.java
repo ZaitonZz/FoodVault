@@ -51,10 +51,11 @@ public class RecipeController {
             String time = recipeInfo[6];
             String cuisine = recipeInfo[7];
             String caloriePerServ = recipeInfo[8];
+            String description = recipeInfo[9];
 
             // create recipe object then add to recipe list
             RecipeData.addRecipe(new Recipe(recipeName, ingredients, instructions, categories,
-                    nutrition, servingSize, time, cuisine, caloriePerServ));
+                    nutrition, servingSize, time, cuisine, caloriePerServ, description));
             line = reader.readLine();
         }
         reader.close();
