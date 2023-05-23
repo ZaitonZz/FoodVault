@@ -7,69 +7,226 @@
     android:layout_height="match_parent"
     tools:context=".View.FragmentSearch">
 
+
     <AutoCompleteTextView
         android:id="@+id/searchEditText"
         android:layout_width="333dp"
         android:layout_height="48dp"
         android:layout_marginTop="40dp"
-        android:background="@drawable/search_background"
+        android:background="@drawable/drop_down_background"
+        android:completionThreshold="1"
         android:fontFamily="@font/roboto_thinitalic"
         android:hint="Search here..."
+        android:inputType="text"
         android:paddingLeft="100dp"
         android:singleLine="true"
+        app:layout_anchorGravity="top|center"
+        app:layout_constraintBottom_toTopOf="@+id/chipFilter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/fvaultImg"
         android:layout_width="68dp"
         android:layout_height="30dp"
         android:src="@drawable/foodvault"
         app:layout_constraintBottom_toBottomOf="@+id/searchEditText"
         app:layout_constraintEnd_toEndOf="@+id/searchEditText"
-        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintHorizontal_bias="0.049"
         app:layout_constraintStart_toStartOf="@+id/searchEditText"
-        app:layout_constraintTop_toTopOf="@+id/searchEditText"
-        app:layout_constraintVertical_bias="0.444" />
+        app:layout_constraintTop_toTopOf="@+id/searchEditText" />
 
     <com.google.android.material.chip.Chip
         android:id="@+id/chipFilter"
         android:layout_width="96dp"
         android:layout_height="41dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginBottom="12dp"
         android:paddingTop="1dp"
         android:text="Filters"
         android:textAlignment="center"
         android:textColor="#FFFFFF"
         app:chipBackgroundColor="#E3170A"
-        app:layout_constraintEnd_toEndOf="@+id/searchEditText"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/searchEditText"
-        app:layout_constraintTop_toBottomOf="@+id/searchEditText" />
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.876"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchEditText"
+        app:layout_constraintVertical_bias="0.0" />
 
-    <FrameLayout
-        android:id="@+id/filterContainer"
-        android:layout_width="262dp"
-        android:layout_height="366dp"
-        android:layout_marginTop="40dp"
-        android:background="@android:color/transparent"
-        app:layout_constraintEnd_toEndOf="@+id/chipFilter"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/chipFilter"
-        app:layout_constraintTop_toTopOf="@+id/chipFilter">
-
-    </FrameLayout>
-
-    <Button
-        android:id="@+id/button"
+    <TextView
+        android:id="@+id/labelTopCateg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="244dp"
-        android:text="Button"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="1dp"
+        android:fontFamily="@font/roboto_bold"
+        android:text="Top Categories"
+        android:textColor="#020202"
+        android:textSize="25sp"
+        app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.167"
+        app:layout_constraintHorizontal_bias="0.161"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/searchEditText" />
+
+    <ScrollView
+        android:id="@+id/scrollView2"
+        android:layout_width="409dp"
+        android:layout_height="486dp"
+        android:layout_marginBottom="102dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/labelTopCateg"
+        app:layout_constraintVertical_bias="1.0">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardViewChicken"
+                android:layout_width="163dp"
+                android:layout_height="182dp"
+                android:layout_marginStart="40dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="4dp"
+                android:contextClickable="true"
+                android:focusable="true"
+                app:cardBackgroundColor="#FFFFFF"
+                app:cardCornerRadius="15dp"
+                app:cardElevation="4dp"
+                app:cardMaxElevation="5dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardViewVegetables"
+                app:layout_constraintEnd_toStartOf="@+id/cardViewBeef"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/chickenCateg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/chicken_adobo" />
+
+            </com.google.android.material.card.MaterialCardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewBeef"
+                android:layout_width="163dp"
+                android:layout_height="182dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="36dp"
+                android:layout_marginBottom="4dp"
+                android:scaleType="fitXY"
+                app:cardBackgroundColor="#555555"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardViewSeaFood"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/cardViewChicken"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageView
+                    android:id="@+id/beefCategory"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/beefbulgogi" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewSeaFood"
+                android:layout_width="163dp"
+                android:layout_height="182dp"
+                android:layout_marginTop="3dp"
+                android:clickable="true"
+                app:cardBackgroundColor="#555555"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardViewDessert"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewBeef"
+                app:layout_constraintStart_toStartOf="@+id/cardViewBeef"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewBeef">
+
+                <ImageView
+                    android:id="@+id/seaFoodCateg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/honeywalnutshrimp" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewVegetables"
+                android:layout_width="163dp"
+                android:layout_height="182dp"
+                android:layout_marginTop="3dp"
+                android:clickable="true"
+                app:cardBackgroundColor="#555555"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toTopOf="@+id/cardViewFilipino"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewChicken"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toStartOf="@+id/cardViewChicken"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewChicken">
+
+                <ImageView
+                    android:id="@+id/vegetablesCateg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/tortangtalong" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewDessert"
+                android:layout_width="163dp"
+                android:layout_height="182dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="6dp"
+                android:clickable="true"
+                app:cardBackgroundColor="#555555"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewSeaFood"
+                app:layout_constraintStart_toStartOf="@+id/cardViewSeaFood"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewSeaFood">
+
+                <ImageView
+                    android:id="@+id/dessertCateg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/lecheflan" />
+            </androidx.cardview.widget.CardView>
+
+            <androidx.cardview.widget.CardView
+                android:id="@+id/cardViewFilipino"
+                android:layout_width="163dp"
+                android:layout_height="182dp"
+                android:layout_marginTop="7dp"
+                android:layout_marginBottom="6dp"
+                android:clickable="true"
+                app:cardBackgroundColor="#555555"
+                app:cardCornerRadius="15dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="@+id/cardViewVegetables"
+                app:layout_constraintStart_toStartOf="@+id/cardViewVegetables"
+                app:layout_constraintTop_toBottomOf="@+id/cardViewVegetables">
+
+                <ImageView
+                    android:id="@+id/filipinoCateg"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/champorado" />
+            </androidx.cardview.widget.CardView>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

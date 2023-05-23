@@ -2,10 +2,7 @@ package com.example.foodvault.View;
 
 import android.os.Bundle;
 
-import androidx.core.view.WindowCompat;
 import androidx.fragment.app.Fragment;
-import java.util.ArrayList;
-import java.util.Arrays;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -18,7 +15,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.foodvault.Controller.RecipeController;
+import com.example.foodvault.Controller.Controller;
 import com.example.foodvault.Model.Recipe;
 import com.example.foodvault.R;
 
@@ -39,9 +36,9 @@ public class FragmentCalc extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        item = new String[RecipeController.RecipeData.getRecipeList().size()];
+        item = new String[Controller.RecipeData.getRecipeList().size()];
         int index = 0;
-        for (Recipe r: RecipeController.RecipeData.getRecipeList()) { // create list for items
+        for (Recipe r: Controller.RecipeData.getRecipeList()) { // create list for items
             item[index] = r.getRecipeName();
             index++;
         }
@@ -64,7 +61,7 @@ public class FragmentCalc extends Fragment {
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 recipeSelectedString = adapterView.getItemAtPosition(i).toString();
                 // show calorie content of recipe
-                selectedRecipe = RecipeController.RecipeData.retrieveRecipeByName(recipeSelectedString);
+                selectedRecipe = Controller.RecipeData.retrieveRecipeByName(recipeSelectedString);
                 calPerServing.setText(selectedRecipe.getCalorieAmount());
             }
         });

@@ -29,9 +29,11 @@ public class RecipeCatalogue {
         Recipe rec = new Recipe();
         rec.setRecipeName(recipeName);
 
-        Recipe r = retrieveRecipe(rec);
+        for (Recipe r: recipeList) {
+            if (r.getRecipeName().equalsIgnoreCase(recipeName)) {return r;}
+        }
 
-        return r;
+        return null;
     }
 
     // Add a new recipe to the recipe list
@@ -63,6 +65,13 @@ public class RecipeCatalogue {
         user.getMyRecipes().add(recipe);
     }
 
+    public void addUserSavedRecipe(UserDetails user, Recipe recipe) {
+        user.getSavedRecipes().add(recipe);
+    }
+
+    public void deleteUserSaveRecipe(UserDetails user, Recipe recipe) {
+        user.getSavedRecipes().remove(recipe);
+    }
 
     // Search for a recipe in the recipe list based on its name
     public Recipe searchRecipe(String recipeName) {
@@ -77,10 +86,37 @@ public class RecipeCatalogue {
     // filter by list of ingredients
     public ArrayList<Recipe> filterByIngredients(ArrayList<Ingredient> ingredientList) {
         ArrayList<Recipe> result = new ArrayList<>();
+
+        if (ingredientList.isEmpty()) {
+            return recipeList;
+        }
+
+        int limit = ingredientList.size();
+
+        // create string for ingredients
+        String[] ingStringArr = new String[limit];
+        int index = 0;
+        for (Ingredient ingredient: ingredientList) {
+            ingStringArr[index] = ingredient.getIngredientName();
+            index++;
+        }
+
+        int counter = 0;
         for (Recipe r: recipeList) {
-            if (r.getIngredients().containsAll(ingredientList)) {
+
+            counter = 0;
+            String[] tempIngList = new String[r.getIngredients().size()];
+            int indexTemp = 0;
+            for (Ingredient i: r.getIngredients()) {
+                tempIngList[indexTemp] = i.getIngredientName();
+                indexTemp++;
+            }
+
+            // check
+            if (Arrays.asList(tempIngList).containsAll(Arrays.asList(ingStringArr))) {
                 result.add(r);
             }
+
         }
 
         return result;
@@ -89,6 +125,10 @@ public class RecipeCatalogue {
     // filter by cuisine
     public ArrayList<Recipe> filterByCuisine(String cuisine) {
         ArrayList<Recipe> result = new ArrayList<>();
+
+        if (cuisine == "") {
+            return recipeList;
+        }
 
         for (Recipe r: recipeList) {
             if (r.getCuisine().equalsIgnoreCase(cuisine)) {
@@ -102,18 +142,28 @@ public class RecipeCatalogue {
     // filter by category
     public ArrayList<Recipe> filterByCategory(String category) {
         ArrayList<Recipe> recipes = new ArrayList<>();
+
+
+        if (category == "") {
+            return recipeList;
+        }
+
         for (Recipe r : recipeList) {
             if (Arrays.asList(r.getCategories()).contains(category)) {
                 recipes.add(r);
-                break;
             }
         }
+
         return recipes;
     }
 
     // filter by cooktime (under n minutes)
     public ArrayList<Recipe> filterByCookTime(double time) { // time should be in minutes
         ArrayList<Recipe> result = new ArrayList<>();
+
+        if(time == 0) {
+            return recipeList;
+        }
 
         for (Recipe r: recipeList) {
             String[] recipeTimeAsString = r.getTime().split(" ");
@@ -130,6 +180,10 @@ public class RecipeCatalogue {
     // filter by nutrition value
     public ArrayList<Recipe> filterByNutrition(String nutrition) {
         ArrayList<Recipe> result = new ArrayList<>();
+
+        if (nutrition == "") {
+            return recipeList;
+        }
 
         for (Recipe r: recipeList) {
             if (Arrays.asList(r.getNutritionValues()).contains(nutrition)) {

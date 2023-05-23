@@ -8,13 +8,8 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.foodvault.Controller.RecipeController;
-import com.example.foodvault.Controller.RecipeSearch;
-import com.example.foodvault.Model.Recipe;
 import com.example.foodvault.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
-import java.io.IOException;
 
 public class ActivityHome extends AppCompatActivity {
 
@@ -25,6 +20,8 @@ public class ActivityHome extends AppCompatActivity {
     FragmentProfile profileFragment = new FragmentProfile();
     BottomNavigationView bottomNavigationView;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +29,7 @@ public class ActivityHome extends AppCompatActivity {
         setContentView(R.layout.activity_home);
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
+
 
         // set default
         replaceFragment(new FragmentHome());
@@ -71,5 +69,6 @@ public class ActivityHome extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         fragmentTransaction.replace(R.id.frame_container, fragment).commit();
     }
+
 
 }

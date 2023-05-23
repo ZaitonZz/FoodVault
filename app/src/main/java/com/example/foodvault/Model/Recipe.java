@@ -1,9 +1,10 @@
 package com.example.foodvault.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Recipe {
-    private String recipeName, servingSize, cuisine, calorieAmount, time;
+public class Recipe implements Serializable {
+    private String recipeName, servingSize, cuisine, calorieAmount, time, description;
     private String[] instructions, categories, nutritionValues;
     private ArrayList<Ingredient> ingredients;
 
@@ -17,6 +18,7 @@ public class Recipe {
         nutritionValues = new String[]{""};
         ingredients = new ArrayList<Ingredient>();
         time = "";
+        description = "";
     }
 
     public Recipe(String recipeName) {
@@ -33,7 +35,7 @@ public class Recipe {
 
     public Recipe(String recipeName, ArrayList<Ingredient> ingredients, String[] instructions,
                   String[] categories, String[] nutritionValues, String servingSize, String time,
-                  String cuisine, String calorieAmount) {
+                  String cuisine, String calorieAmount, String description) {
         this.recipeName = recipeName;
         this.ingredients = ingredients;
         this.instructions = instructions;
@@ -43,11 +45,16 @@ public class Recipe {
         this.time = time;
         this.cuisine = cuisine;
         this.calorieAmount = calorieAmount;
+        this.description = description;
     }
 
     public String getTime() {
         return time;
     }
+
+    public String getDescription() {return description;}
+
+    public void setDescription() {this.description = description;}
 
     public void setTime(String time) {
         this.time = time;

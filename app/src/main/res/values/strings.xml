@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name" translatable="false">FoodVault</string>
     <string name="select" translatable="false">Select Recipe</string>
+    <string name="title_activity_show_recipe_list" translatable="false">ShowRecipeList</string>
 </resources>

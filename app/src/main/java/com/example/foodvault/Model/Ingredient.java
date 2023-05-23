@@ -2,7 +2,7 @@ package com.example.foodvault.Model;
 
 public class Ingredient {
     private String ingredientName, quantity, unit, preparation;
-    Ingredient(){
+    public Ingredient(){
 
         ingredientName ="";
         quantity = "";
