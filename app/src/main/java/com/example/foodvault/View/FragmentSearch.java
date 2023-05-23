@@ -122,48 +122,48 @@ public class FragmentSearch extends Fragment {
         imageChicken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Chicken");
-                startActivity(new Intent(getActivity(), ShowRecipeData.class));
+                ActivityShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Chicken");
+                startActivity(new Intent(getActivity(), ActivityShowRecipeData.class));
             }
         });
 
         imageBeef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Beef");
-                startActivity(new Intent(getActivity(), ShowRecipeData.class));
+                ActivityShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Beef");
+                startActivity(new Intent(getActivity(), ActivityShowRecipeData.class));
             }
         });
 
         imageSeaFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Seafood");
-                startActivity(new Intent(getActivity(), ShowRecipeData.class));
+                ActivityShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Seafood");
+                startActivity(new Intent(getActivity(), ActivityShowRecipeData.class));
             }
         });
 
         imageFilipino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCuisine("Filipino");
-                startActivity(new Intent(getActivity(), ShowRecipeData.class));
+                ActivityShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCuisine("Filipino");
+                startActivity(new Intent(getActivity(), ActivityShowRecipeData.class));
             }
         });
 
         imageVegetables.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Vegetables");
-                startActivity(new Intent(getActivity(), ShowRecipeData.class));
+                ActivityShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Vegetables");
+                startActivity(new Intent(getActivity(), ActivityShowRecipeData.class));
             }
         });
 
         imageDessert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Dessert");
-                startActivity(new Intent(getActivity(), ShowRecipeData.class));
+                ActivityShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Dessert");
+                startActivity(new Intent(getActivity(), ActivityShowRecipeData.class));
             }
         });
 
@@ -290,10 +290,10 @@ public class FragmentSearch extends Fragment {
                     Toast.makeText(view.getContext(),"No results", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    ShowRecipeData.recipeListToShow = Controller.RecipeData.filterOperation(
+                    ActivityShowRecipeData.recipeListToShow = Controller.RecipeData.filterOperation(
                             ingredientsListNames, mealType, cuisine, cookTime, nutrition);
 
-                    startActivity(new Intent(getActivity(), ShowRecipeData.class));
+                    startActivity(new Intent(getActivity(), ActivityShowRecipeData.class));
                 }
 
             }

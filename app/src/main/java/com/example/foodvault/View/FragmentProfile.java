@@ -14,7 +14,6 @@ import android.widget.TextView;
 import com.example.foodvault.Controller.Controller;
 import com.example.foodvault.Controller.CustomAdapter;
 import com.example.foodvault.Model.Recipe;
-import com.example.foodvault.Model.UserCRUD;
 import com.example.foodvault.Model.UserDetails;
 import com.example.foodvault.R;
 
@@ -40,7 +39,7 @@ public class FragmentProfile extends Fragment {
         recyclerViewProf = view.findViewById(R.id.recyclerViewProf);
 
         // retrieve current user
-        UserDetails current = Controller.UserData.retrieveUserWithUsername(ActivityLogin.currentUserLogIn);
+        UserDetails current = Controller.UserData.retrieveUserByUsername(ActivityLogin.currentUserLogIn);
 
         // set text view by user data
         fullName.setText(String.format("%s %s",current.getFirstName(), current.getLastName()));

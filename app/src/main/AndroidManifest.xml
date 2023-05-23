@@ -19,7 +19,7 @@
             android:name=".View.ActivityViewRecipe"
             android:exported="false" />
         <activity
-            android:name=".View.ShowRecipeData"
+            android:name=".View.ActivityShowRecipeData"
             android:exported="false" />
         <activity
             android:name=".View.ActivityRegister"

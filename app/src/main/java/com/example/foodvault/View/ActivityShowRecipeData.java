@@ -12,7 +12,7 @@ import com.example.foodvault.R;
 
 import java.util.ArrayList;
 
-public class ShowRecipeData extends AppCompatActivity {
+public class ActivityShowRecipeData extends AppCompatActivity {
 
     RecyclerView recyclerView;
     public static ArrayList<Recipe> recipeListToShow;
@@ -25,8 +25,8 @@ public class ShowRecipeData extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.recyclerView);
 
-        customAdapter = new CustomAdapter(ShowRecipeData.this, recipeListToShow);
+        customAdapter = new CustomAdapter(ActivityShowRecipeData.this, recipeListToShow);
         recyclerView.setAdapter(customAdapter);
-        recyclerView.setLayoutManager(new LinearLayoutManager(ShowRecipeData.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(ActivityShowRecipeData.this));
     }
 }

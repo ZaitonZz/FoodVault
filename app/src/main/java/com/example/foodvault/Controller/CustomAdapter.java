@@ -14,7 +14,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.foodvault.Model.Recipe;
-import com.example.foodvault.Model.UserCRUD;
 import com.example.foodvault.Model.UserDetails;
 import com.example.foodvault.R;
 import com.example.foodvault.View.ActivityLogin;
@@ -68,7 +67,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         // retrieve saved recipes of user then modify the image button
         Recipe selectedRec = recipeListView.get(position);
-        UserDetails currentUser = Controller.UserData.retrieveUserWithUsername(ActivityLogin.currentUserLogIn);
+        UserDetails currentUser = Controller.UserData.retrieveUserByUsername(ActivityLogin.currentUserLogIn);
         if (currentUser.getSavedRecipes().contains(selectedRec)) {
             holder.saveButton.setSelected(true);
         }
@@ -79,7 +78,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
                 if(holder.saveButton.isSelected()) {
                     holder.saveButton.setSelected(false);
                     // remove saved recipe of user
-                    Controller.RecipeData.deleteUserSaveRecipe(currentUser, selectedRec);
+                    Controller.RecipeData.deleteUserSavedRecipe(currentUser, selectedRec);
                 }
                 else {
                     holder.saveButton.setSelected(true);

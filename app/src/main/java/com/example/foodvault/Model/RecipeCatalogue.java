@@ -1,11 +1,7 @@
 package com.example.foodvault.Model;
 
-import android.widget.ArrayAdapter;
-
-import java.sql.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.concurrent.RecursiveAction;
 
 public class RecipeCatalogue {
     private ArrayList<Recipe> recipeList;
@@ -72,18 +68,8 @@ public class RecipeCatalogue {
         user.getSavedRecipes().add(recipe);
     }
 
-    public void deleteUserSaveRecipe(UserDetails user, Recipe recipe) {
+    public void deleteUserSavedRecipe(UserDetails user, Recipe recipe) {
         user.getSavedRecipes().remove(recipe);
-    }
-
-    // Search for a recipe in the recipe list based on its name
-    public Recipe searchRecipe(String recipeName) {
-        for (Recipe r : recipeList) {
-            if (r.getRecipeName().toLowerCase().contains(recipeName.toLowerCase())) {
-                return r;
-            }
-        }
-        return null;
     }
 
     // filter by list of ingredients

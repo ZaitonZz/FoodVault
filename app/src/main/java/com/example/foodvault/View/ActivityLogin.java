@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.foodvault.Controller.LoginStuff;
 import com.example.foodvault.Controller.Controller;
 import com.example.foodvault.R;
 
