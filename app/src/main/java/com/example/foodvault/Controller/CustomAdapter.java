@@ -68,7 +68,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.MyViewHold
 
         // retrieve saved recipes of user then modify the image button
         Recipe selectedRec = recipeListView.get(position);
-        UserDetails currentUser = UserCRUD.retrieveUserWithUsername(ActivityLogin.currentUserLogIn);
+        UserDetails currentUser = Controller.UserData.retrieveUserWithUsername(ActivityLogin.currentUserLogIn);
         if (currentUser.getSavedRecipes().contains(selectedRec)) {
             holder.saveButton.setSelected(true);
         }

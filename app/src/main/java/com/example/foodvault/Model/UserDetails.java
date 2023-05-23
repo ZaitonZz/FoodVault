@@ -58,6 +58,18 @@ public class UserDetails extends Person{
         return savedRecipes;
     }
 
+    public String getSaveRecipesAsString() {
+
+        String[] store = new String[savedRecipes.size()];
+        int index = 0;
+        for (Recipe r: savedRecipes) {
+            store[index] = r.getRecipeName();
+            index++;
+        }
+
+        return String.join(",", store);
+    }
+
     public void setSavedRecipes(ArrayList<Recipe> savedRecipes) {
         this.savedRecipes = savedRecipes;
     }
