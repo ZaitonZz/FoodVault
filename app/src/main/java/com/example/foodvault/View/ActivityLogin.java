@@ -23,7 +23,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
     private Button checkLogin, createAcc;
     private EditText usern, pass;
-    private LoginStuff loginStuff;
+//    private LoginStuff loginStuff;
 
     public static String currentUserLogIn;
 
@@ -61,12 +61,12 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         }
 //        enableFullscreen();
     }
-@Override
+    @Override
     public void onClick(View v) {
         int id = v.getId();
         if (id == R.id.loginButton) {
-            loginStuff = new LoginStuff(this);
-            if(loginStuff.loginSuccess(usern.getText().toString(),pass.getText().toString())){
+//            loginStuff = new LoginStuff(this);
+            if(Controller.UserData.retrieveUserDetails(usern.getText().toString(),pass.getText().toString()) != null){
                 currentUserLogIn = usern.getText().toString();
                 startActivity(new Intent(this, ActivityHome.class));
             } else {
@@ -78,6 +78,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
             startActivity(new Intent(this, ActivityRegister.class));
         }
     }
+
 
 
 }

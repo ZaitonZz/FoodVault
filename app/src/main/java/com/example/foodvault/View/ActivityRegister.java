@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.example.foodvault.Controller.Controller;
 import com.example.foodvault.Model.UserCRUD;
 import com.example.foodvault.Model.UserDetails;
 import com.example.foodvault.R;
@@ -19,7 +20,7 @@ import java.io.IOException;
 public class ActivityRegister extends AppCompatActivity implements View.OnClickListener {
 
     private EditText firstName, lastName, username, email, password;
-    UserCRUD userCRUD;
+//    UserCRUD userCRUD;
     Button createButton;
 
     @Override
@@ -27,7 +28,7 @@ public class ActivityRegister extends AppCompatActivity implements View.OnClickL
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
-        userCRUD = new UserCRUD(this);
+//        userCRUD = new UserCRUD(this);
         firstName = findViewById(R.id.editTextFName);
         lastName = findViewById(R.id.editTextLName);
         username = findViewById(R.id.editTextusername);
@@ -49,14 +50,14 @@ public class ActivityRegister extends AppCompatActivity implements View.OnClickL
             {
                 Toast.makeText(this, "Please fill in all fields!", Toast.LENGTH_LONG).show();
             } else {
-                userCRUD.createUserDetails(new UserDetails(firstName.getText().toString(),
+                Controller.UserData.createUserDetails(new UserDetails(firstName.getText().toString(),
                         lastName.getText().toString(), username.getText().toString(),
                         email.getText().toString(), password.getText().toString()));
-                try {
-                    userCRUD.saveToFile();
-                } catch (IOException e) {
-                    throw new RuntimeException(e);
-                }
+//                try {
+//                    Controller.saveToFile(this);
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
                 Toast.makeText(this, "Registration Successful!", Toast.LENGTH_LONG).show();
                 startActivity(new Intent(this, ActivityLogin.class));
             }

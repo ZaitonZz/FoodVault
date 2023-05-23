@@ -18,11 +18,16 @@ import java.util.ArrayList;
 
 public class UserCRUD {
     private Context context;
-    public static ArrayList<UserDetails> userList = new ArrayList<>();
+    private ArrayList<UserDetails> userList;
     static AssetManager assetManager;
 
-    public UserCRUD(Context context){
+    public UserCRUD() {
+        userList = new ArrayList<>();
+    }
+
+    public UserCRUD(Context context) {
         this.context = context;
+        userList = new ArrayList<>();
         assetManager = context.getAssets();
         File file = new File(context.getExternalFilesDir(null),"userDetails.txt");
         if (!file.exists()) {
@@ -46,10 +51,12 @@ public class UserCRUD {
         }
     }
     public void createUserDetails(UserDetails ud) {
-        userList.add(ud);
+        if (retrieveUserWithUsername(ud.getUsername()) == null) {
+            userList.add(ud);
+        }
     }
 
-    public static UserDetails retrieveUserWithUsername(String uname) {
+    public UserDetails retrieveUserWithUsername(String uname) {
         for (UserDetails ud: userList) {
             if (ud.getUsername().equals(uname)) {
                 return ud;
@@ -66,6 +73,10 @@ public class UserCRUD {
             }
         }
         return null;
+    }
+
+    public ArrayList<UserDetails> getUserList() {
+        return userList;
     }
 
     public void updateUser(UserDetails ud) {

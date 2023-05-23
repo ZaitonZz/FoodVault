@@ -38,7 +38,10 @@ public class RecipeCatalogue {
 
     // Add a new recipe to the recipe list
     public void addRecipe(Recipe recipe) {
-        recipeList.add(recipe);
+        if(retrieveRecipe(recipe) == null) {
+            recipeList.add(recipe);
+        }
+
     }
 
     // Retrieve a recipe object from a specific user's recipe list
