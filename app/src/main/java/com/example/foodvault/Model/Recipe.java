@@ -1,8 +1,9 @@
 package com.example.foodvault.Model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class Recipe {
+public class Recipe implements Serializable {
     private String recipeName, servingSize, cuisine, calorieAmount, time, description;
     private String[] instructions, categories, nutritionValues;
     private ArrayList<Ingredient> ingredients;

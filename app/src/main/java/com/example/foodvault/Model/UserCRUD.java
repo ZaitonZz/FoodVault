@@ -18,7 +18,7 @@ import java.util.ArrayList;
 
 public class UserCRUD {
     private Context context;
-    ArrayList<UserDetails> userList = new ArrayList<>();
+    public static ArrayList<UserDetails> userList = new ArrayList<>();
     static AssetManager assetManager;
 
     public UserCRUD(Context context){
@@ -47,6 +47,16 @@ public class UserCRUD {
     }
     public void createUserDetails(UserDetails ud) {
         userList.add(ud);
+    }
+
+    public static UserDetails retrieveUserWithUsername(String uname) {
+        for (UserDetails ud: userList) {
+            if (ud.getUsername().equals(uname)) {
+                return ud;
+            }
+        }
+
+        return null;
     }
 
     public UserDetails retrieveUserDetails(String username, String password) {

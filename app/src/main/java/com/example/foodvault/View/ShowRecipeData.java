@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import com.example.foodvault.Controller.CustomAdapter;
-import com.example.foodvault.Controller.RecipeController;
 import com.example.foodvault.Model.Recipe;
 import com.example.foodvault.R;
 

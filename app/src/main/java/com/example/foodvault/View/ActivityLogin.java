@@ -6,7 +6,6 @@ import androidx.core.view.WindowCompat;
 import android.Manifest;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.AssetManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.View;
@@ -15,13 +14,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.foodvault.Controller.LoginStuff;
-import com.example.foodvault.Controller.RecipeController;
-import com.example.foodvault.Model.RecipeCatalogue;
+import com.example.foodvault.Controller.Controller;
 import com.example.foodvault.R;
 
-import java.io.File;
 import java.io.IOException;
-import java.io.InputStream;
 
 public class ActivityLogin extends AppCompatActivity implements View.OnClickListener {
     private static final int PERMISSION_REQUEST_STORAGE = 1000;
@@ -29,14 +25,17 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
     private EditText usern, pass;
     private LoginStuff loginStuff;
 
+    public static String currentUserLogIn;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         setContentView(R.layout.activity_login);
 
+        // retrieve recipe data base
         try {
-            RecipeController.loadFromFile(this);
+            Controller.loadFromFile(this);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -68,6 +67,7 @@ public class ActivityLogin extends AppCompatActivity implements View.OnClickList
         if (id == R.id.loginButton) {
             loginStuff = new LoginStuff(this);
             if(loginStuff.loginSuccess(usern.getText().toString(),pass.getText().toString())){
+                currentUserLogIn = usern.getText().toString();
                 startActivity(new Intent(this, ActivityHome.class));
             } else {
                 Toast.makeText(this,"User Not Found!", Toast.LENGTH_SHORT).show();

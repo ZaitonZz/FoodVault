@@ -11,14 +11,16 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.foodvault.Controller.CustomAdapter;
-import com.example.foodvault.Controller.RecipeController;
+import com.example.foodvault.Controller.Controller;
 import com.example.foodvault.Model.Ingredient;
 import com.example.foodvault.Model.Recipe;
 import com.example.foodvault.R;
@@ -47,6 +49,8 @@ public class FragmentSearch extends Fragment {
 
     CustomAdapter customAdapter;
 
+    String searchedRecipeString;
+
     View view;
 
 
@@ -54,9 +58,9 @@ public class FragmentSearch extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        item = new String[RecipeController.RecipeData.getRecipeList().size()];
+        item = new String[Controller.RecipeData.getRecipeList().size()];
         int index = 0;
-        for (Recipe r: RecipeController.RecipeData.getRecipeList()) { // create list for items
+        for (Recipe r: Controller.RecipeData.getRecipeList()) { // create list for items
             item[index] = r.getRecipeName();
             index++;
         }
@@ -68,6 +72,38 @@ public class FragmentSearch extends Fragment {
         autoCompleteTextView = view.findViewById(R.id.searchEditText);
         adapterItems = new ArrayAdapter<String>(view.getContext(), R.layout.recipe_list, item);
         autoCompleteTextView.setAdapter(adapterItems);
+
+        // select item listener
+        autoCompleteTextView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                searchedRecipeString = adapterView.getItemAtPosition(i).toString();
+                Intent intent = new Intent(view.getContext(), ActivityViewRecipe.class);
+                intent.putExtra("recipe", searchedRecipeString);
+                view.getContext().startActivity(intent);
+            }
+        });
+
+        autoCompleteTextView.setOnKeyListener(new View.OnKeyListener() {
+            @Override
+            public boolean onKey(View v, int i, KeyEvent keyEvent) {
+                if (keyEvent.getAction() == KeyEvent.ACTION_DOWN && i == KeyEvent.KEYCODE_ENTER) {
+                    searchedRecipeString = autoCompleteTextView.getText().toString();
+
+                    if (Controller.RecipeData.retrieveRecipeByName(searchedRecipeString) == null) {
+                        Toast.makeText(view.getContext(),"No results", Toast.LENGTH_SHORT).show();
+                    }
+                    else {
+                        Intent intent = new Intent(view.getContext(), ActivityViewRecipe.class);
+                        intent.putExtra("recipe", searchedRecipeString);
+                        view.getContext().startActivity(intent);
+                        return true;
+                    }
+
+                }
+                return false;
+            }
+        });
 
         // bottom sheet filter options
         filterChip = view.findViewById(R.id.chipFilter);
@@ -86,7 +122,7 @@ public class FragmentSearch extends Fragment {
         imageChicken.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = RecipeController.RecipeData.filterByCategory("Chicken");
+                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Chicken");
                 startActivity(new Intent(getActivity(), ShowRecipeData.class));
             }
         });
@@ -94,7 +130,7 @@ public class FragmentSearch extends Fragment {
         imageBeef.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = RecipeController.RecipeData.filterByCategory("Beef");
+                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Beef");
                 startActivity(new Intent(getActivity(), ShowRecipeData.class));
             }
         });
@@ -102,7 +138,7 @@ public class FragmentSearch extends Fragment {
         imageSeaFood.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = RecipeController.RecipeData.filterByCategory("Seafood");
+                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Seafood");
                 startActivity(new Intent(getActivity(), ShowRecipeData.class));
             }
         });
@@ -110,7 +146,7 @@ public class FragmentSearch extends Fragment {
         imageFilipino.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = RecipeController.RecipeData.filterByCuisine("Filipino");
+                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCuisine("Filipino");
                 startActivity(new Intent(getActivity(), ShowRecipeData.class));
             }
         });
@@ -118,7 +154,7 @@ public class FragmentSearch extends Fragment {
         imageVegetables.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = RecipeController.RecipeData.filterByCategory("Vegetables");
+                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Vegetables");
                 startActivity(new Intent(getActivity(), ShowRecipeData.class));
             }
         });
@@ -126,7 +162,7 @@ public class FragmentSearch extends Fragment {
         imageDessert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ShowRecipeData.recipeListToShow = RecipeController.RecipeData.filterByCategory("Dessert");
+                ShowRecipeData.recipeListToShow = Controller.RecipeData.filterByCategory("Dessert");
                 startActivity(new Intent(getActivity(), ShowRecipeData.class));
             }
         });
@@ -141,7 +177,7 @@ public class FragmentSearch extends Fragment {
         return view;
     }
 
-    private void createDialog() {
+    private void createDialog() { // bottom sheet dialog config
         View bottomSheetView = getLayoutInflater().inflate(R.layout.fragment_filters, null, false);
         bottomSheetDialog.setContentView(bottomSheetView);
         // entry chip for filter ingredient
@@ -249,11 +285,17 @@ public class FragmentSearch extends Fragment {
                     }
                 }
 
+                if (Controller.RecipeData.filterOperation(
+                        ingredientsListNames, mealType, cuisine, cookTime, nutrition).isEmpty()) {
+                    Toast.makeText(view.getContext(),"No results", Toast.LENGTH_SHORT).show();
+                }
+                else {
+                    ShowRecipeData.recipeListToShow = Controller.RecipeData.filterOperation(
+                            ingredientsListNames, mealType, cuisine, cookTime, nutrition);
 
-                ShowRecipeData.recipeListToShow = RecipeController.RecipeData.filterOperation(
-                        ingredientsListNames, mealType, cuisine, cookTime, nutrition);
+                    startActivity(new Intent(getActivity(), ShowRecipeData.class));
+                }
 
-                startActivity(new Intent(getActivity(), ShowRecipeData.class));
             }
         });
     }

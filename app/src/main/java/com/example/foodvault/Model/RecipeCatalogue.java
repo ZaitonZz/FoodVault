@@ -29,9 +29,11 @@ public class RecipeCatalogue {
         Recipe rec = new Recipe();
         rec.setRecipeName(recipeName);
 
-        Recipe r = retrieveRecipe(rec);
+        for (Recipe r: recipeList) {
+            if (r.getRecipeName().equalsIgnoreCase(recipeName)) {return r;}
+        }
 
-        return r;
+        return null;
     }
 
     // Add a new recipe to the recipe list
@@ -63,6 +65,13 @@ public class RecipeCatalogue {
         user.getMyRecipes().add(recipe);
     }
 
+    public void addUserSavedRecipe(UserDetails user, Recipe recipe) {
+        user.getSavedRecipes().add(recipe);
+    }
+
+    public void deleteUserSaveRecipe(UserDetails user, Recipe recipe) {
+        user.getSavedRecipes().remove(recipe);
+    }
 
     // Search for a recipe in the recipe list based on its name
     public Recipe searchRecipe(String recipeName) {
@@ -142,7 +151,6 @@ public class RecipeCatalogue {
         for (Recipe r : recipeList) {
             if (Arrays.asList(r.getCategories()).contains(category)) {
                 recipes.add(r);
-                break;
             }
         }
 

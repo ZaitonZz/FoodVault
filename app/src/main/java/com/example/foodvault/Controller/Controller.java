@@ -6,18 +6,14 @@ import android.content.res.AssetManager;
 import com.example.foodvault.Model.Ingredient;
 import com.example.foodvault.Model.Recipe;
 import com.example.foodvault.Model.RecipeCatalogue;
-import com.example.foodvault.Model.UserDetails;
 
 import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 
-public class RecipeController {
+public class Controller {
     public static RecipeCatalogue RecipeData = new RecipeCatalogue();
 
     // load recipe data base
@@ -60,4 +56,6 @@ public class RecipeController {
         }
         reader.close();
     }
+
+
 }

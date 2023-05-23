@@ -110,7 +110,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/chicken_adobo" />
 
             </com.google.android.material.card.MaterialCardView>
@@ -136,7 +136,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:clickable="true"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/beefbulgogi" />
             </androidx.cardview.widget.CardView>
 
@@ -157,7 +157,7 @@
                     android:id="@+id/seaFoodCateg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/honeywalnutshrimp" />
             </androidx.cardview.widget.CardView>
 
@@ -179,7 +179,7 @@
                     android:id="@+id/vegetablesCateg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/tortangtalong" />
             </androidx.cardview.widget.CardView>
 
@@ -201,7 +201,7 @@
                     android:id="@+id/dessertCateg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/lecheflan" />
             </androidx.cardview.widget.CardView>
 
@@ -223,7 +223,7 @@
                     android:id="@+id/filipinoCateg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:scaleType="fitXY"
+                    android:scaleType="centerCrop"
                     android:src="@drawable/champorado" />
             </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>

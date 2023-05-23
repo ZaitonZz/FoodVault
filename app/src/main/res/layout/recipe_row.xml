@@ -6,6 +6,7 @@
     android:layout_height="wrap_content"
     android:gravity="center_horizontal"
     android:orientation="vertical"
+    android:id="@+id/mainLayoutRecipe"
     android:layout_marginTop="5dp">
 
     <com.google.android.material.card.MaterialCardView
@@ -83,6 +84,7 @@
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/openRecipeButton"
                     style="?attr/borderlessButtonStyle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -90,15 +92,13 @@
                     android:text="Open" />
 
                 <ImageButton
-                    android:id="@+id/imageButton2"
-                    android:layout_width="25dp"
-                    android:layout_height="28dp"
+                    android:id="@+id/savedRecipeButton"
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
                     android:layout_gravity="center_vertical"
                     android:layout_marginStart="210dp"
                     android:layout_weight="1"
-                    android:background="#FEFEFE"
-                    android:scaleType="fitXY"
-                    app:srcCompat="@drawable/saveicon" />
+                    android:background="@drawable/fav_button_bg" />
 
 
             </LinearLayout>
