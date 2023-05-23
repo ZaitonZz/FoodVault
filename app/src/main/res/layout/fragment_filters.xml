@@ -78,7 +78,7 @@
                     android:textSize="15sp" />
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/mealTypeGroup"
+                    android:id="@+id/mealTypeGroupMyRecipe"
                     android:layout_width="289dp"
                     android:layout_height="98dp"
                     android:layout_marginLeft="35dp"
@@ -86,29 +86,30 @@
                     app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipAppetizers"
+                        android:id="@+id/chipApp"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:fontFamily="sans-serif"
+
                         android:text="Appetizers" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipMainDish"
+                        android:id="@+id/chipMain"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Main Dish" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipDessert"
+                        android:id="@+id/chipDess"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Dessert" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipSnacks"
+                        android:id="@+id/chipSnacksMy"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -235,7 +236,7 @@
                     android:textSize="15sp" />
 
                 <com.google.android.material.chip.ChipGroup
-                    android:id="@+id/nutritionGroup"
+                    android:id="@+id/nutritionGroupMyRecipe"
                     android:layout_width="353dp"
                     android:layout_height="94dp"
                     android:layout_marginTop="0dp"
@@ -243,28 +244,28 @@
                     app:singleSelection="true">
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipLowSodium"
+                        android:id="@+id/chipLowSod"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Low Sodium" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipLowSugar"
+                        android:id="@+id/chipLowSug"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Low Sugar" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipHighProtein"
+                        android:id="@+id/chipHighProt"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="High Protein" />
 
                     <com.google.android.material.chip.Chip
-                        android:id="@+id/chipDairyFree"
+                        android:id="@+id/chipDFree"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"

@@ -45,10 +45,11 @@ public class RecipeCatalogue {
     }
 
     // Retrieve a recipe object from a specific user's recipe list
-    public Recipe retrieveUserRecipe(UserDetails user, Recipe recipe) {
-        if (user.getMyRecipes().contains(recipe)) {
-            int index = user.getMyRecipes().indexOf(recipe);
-            return user.getMyRecipes().get(index);
+    public Recipe retrieveUserRecipe(UserDetails user, String myRecipe) {
+        for (Recipe r: user.getMyRecipes()) {
+            if (r.getRecipeName().equalsIgnoreCase(myRecipe)) {
+                return r;
+            }
         }
         return null;
     }
@@ -60,16 +61,26 @@ public class RecipeCatalogue {
         }
     }
 
-    public void deleteUserRecipe(UserDetails user, Recipe recipe) {
-        user.getMyRecipes().remove(recipe);
+    public void deleteUserRecipe(UserDetails user, String name) {
+        for(Recipe r: user.getMyRecipes()) {
+            if (r.getRecipeName().equalsIgnoreCase(name)) {
+                user.getMyRecipes().remove(r);
+            }
+        }
     }
 
     public void addUserRecipe(UserDetails user, Recipe recipe) {
-        user.getMyRecipes().add(recipe);
+        if (retrieveUserRecipe(user, recipe.getRecipeName()) == null) {
+            user.getMyRecipes().add(recipe);
+        }
+
     }
 
     public void addUserSavedRecipe(UserDetails user, Recipe recipe) {
+
         user.getSavedRecipes().add(recipe);
+
+
     }
 
     public void deleteUserSaveRecipe(UserDetails user, Recipe recipe) {
