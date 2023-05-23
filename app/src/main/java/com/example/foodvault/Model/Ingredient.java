@@ -49,6 +49,10 @@ public class Ingredient {
         this.preparation = preparation;
     }
 
+    public String toString() {
+        return String.format("%s-%s-%s-%s", quantity, unit, ingredientName, preparation);
+    }
+
     public boolean equals(Ingredient i) {
         if (this.getIngredientName().equalsIgnoreCase(i.getIngredientName())) {
             return true;

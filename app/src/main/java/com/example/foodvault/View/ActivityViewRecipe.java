@@ -4,12 +4,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.foodvault.Controller.Controller;
 import com.example.foodvault.Model.Ingredient;
 import com.example.foodvault.Model.Recipe;
+import com.example.foodvault.Model.UserDetails;
 import com.example.foodvault.R;
 import com.google.android.material.chip.Chip;
 import com.google.android.material.chip.ChipGroup;
@@ -52,6 +54,10 @@ public class ActivityViewRecipe extends AppCompatActivity {
             Intent intent = getIntent();
             String recipeName = intent.getStringExtra("recipe");
             Recipe recipeTemp = Controller.RecipeData.retrieveRecipeByName(recipeName);
+            if (recipeTemp == null) {
+                UserDetails us = Controller.UserData.retrieveUserWithUsername(ActivityLogin.currentUserLogIn);
+                recipeTemp = Controller.RecipeData.retrieveUserRecipe(us,recipeName);
+            }
 
             // set data
             recipeNameText.setText(recipeTemp.getRecipeName());
@@ -97,6 +103,9 @@ public class ActivityViewRecipe extends AppCompatActivity {
             String name = recipeName.replaceAll("\\s", "").toLowerCase();
 
             int resourceID = this.getResources().getIdentifier(name, "drawable", this.getPackageName());
+            if (resourceID == View.NO_ID) {
+                resourceID = this.getResources().getIdentifier("myrecipebackground", "drawable", this.getPackageName());
+            }
             imageRecipe.setImageResource(resourceID);
 
 

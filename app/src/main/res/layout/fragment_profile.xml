@@ -72,7 +72,6 @@
         app:layout_constraintTop_toBottomOf="@+id/usernameText" />
 
     <ImageButton
-        android:id="@+id/imageButton"
         android:layout_width="29dp"
         android:layout_height="33dp"
         android:layout_marginTop="35dp"

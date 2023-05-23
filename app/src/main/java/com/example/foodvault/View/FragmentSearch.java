@@ -208,10 +208,10 @@ public class FragmentSearch extends Fragment {
 
         // filters
         Button searchFilter = bottomSheetView.findViewById(R.id.searchWithFilter);
-        ChipGroup chipGroupMealTypes = bottomSheetView.findViewById(R.id.mealTypeGroup);
+        ChipGroup chipGroupMealTypes = bottomSheetView.findViewById(R.id.mealTypeGroupMyRecipe);
         ChipGroup chipGroupCuisine = bottomSheetView.findViewById(R.id.cuisineGroup);
         ChipGroup chipGroupCookTime = bottomSheetView.findViewById(R.id.cookTimeGroup);
-        ChipGroup chipGroupNutrition = bottomSheetView.findViewById(R.id.nutritionGroup);
+        ChipGroup chipGroupNutrition = bottomSheetView.findViewById(R.id.nutritionGroupMyRecipe);
 
         searchFilter.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -23,6 +23,8 @@ public class ActivityHome extends AppCompatActivity {
     FragmentProfile profileFragment = new FragmentProfile();
     BottomNavigationView bottomNavigationView;
 
+    public static boolean createMyRecipeSuccess = false;
+
 
 
     @Override
@@ -35,7 +37,15 @@ public class ActivityHome extends AppCompatActivity {
 
 
         // set default
-        replaceFragment(new FragmentHome());
+        if (createMyRecipeSuccess) {
+            replaceFragment(new FragmentWrite());
+            bottomNavigationView.getMenu().findItem(R.id.navigation_write).setChecked(true);
+            createMyRecipeSuccess = false;
+        }
+        else  {
+            replaceFragment(new FragmentHome());
+        }
+
         bottomNavigationView.setOnItemSelectedListener(item -> {
             int id = item.getItemId();
 
@@ -78,6 +88,7 @@ public class ActivityHome extends AppCompatActivity {
         super.onDestroy();
         try {
             Controller.saveToFile(this);
+            Controller.saveToFileMyRecipes(this);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -88,6 +99,7 @@ public class ActivityHome extends AppCompatActivity {
         super.onStop();
         try {
             Controller.saveToFile(this);
+            Controller.saveToFileMyRecipes(this);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
